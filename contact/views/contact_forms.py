@@ -6,6 +6,8 @@ from contact.models import Contact
 
 
 def create(request):
+    print(request.POST.get('first_name'))
+    print(request.POST.get('last_name'))
     context = {}
 
     return render(
