@@ -1,14 +1,19 @@
 
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from contact import forms
 
 
 def create(request):
     if request.method == 'POST':
+        form = forms.ContactForm(request.POST)
         context = {
-            'form': forms.ContactForm(request.POST)
+            'form': form
         }
+
+        if form.is_valid():
+            form.save()
+            return redirect('contact:create')
 
         return render(
             request,
