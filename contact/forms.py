@@ -16,15 +16,15 @@ class ContactForm(forms.ModelForm):
         help_text='Texto de ajuda'
     )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
 
-        # self.fields['first_name'].widget.attrs.update(
-        #     {
-        #         'class': 'classe-a classe-b',
-        #         'placeholder': 'Escreva aqui'
-        #     }
-        # )
+    # self.fields['first_name'].widget.attrs.update(
+    #     {
+    #         'class': 'classe-a classe-b',
+    #         'placeholder': 'Escreva aqui'
+    #     }
+    # )
 
     class Meta:
         model = models.Contact
