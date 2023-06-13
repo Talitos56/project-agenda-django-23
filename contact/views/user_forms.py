@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
 from contact import forms
-from contact.forms import RegisterForm
+from contact.forms import RegisterForm, RegisterUpdateForm
 
 
 def register(request):
@@ -45,6 +45,40 @@ def login_view(request):
     return render(
         request,
         'contact/login.html',
+        {
+            'form': form
+        }
+    )
+
+
+def user_update(request):
+
+    form = RegisterUpdateForm(instance=request.user)
+
+    if request.method != 'POST':
+        return render(
+            request,
+            'contact/register.html',
+            {
+                'form': form
+            }
+        )
+
+    form = RegisterUpdateForm(data=request.POST, instance=request.user)
+
+    if not form.is_valid():
+        return render(
+            request,
+            'contact/register.html',
+            {
+                'form': form
+            }
+        )
+
+    form.save()
+    return render(
+        request,
+        'contact/register.html',
         {
             'form': form
         }
