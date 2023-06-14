@@ -1,9 +1,7 @@
 from django.contrib import auth, messages
 from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse
+from django.shortcuts import redirect, render
 
-from contact import forms
 from contact.forms import RegisterForm, RegisterUpdateForm
 
 
@@ -58,7 +56,7 @@ def user_update(request):
     if request.method != 'POST':
         return render(
             request,
-            'contact/register.html',
+            'contact/user_update.html',
             {
                 'form': form
             }
