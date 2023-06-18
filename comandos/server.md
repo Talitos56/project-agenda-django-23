@@ -53,11 +53,11 @@ git pull agendarepo main
 Configurando o Postgresql
 sudo -u postgres psql
 
-postgres=# create role usuario_agenda with login superuser createdb createrole password 'senha_usuario_agenda';
+postgres=# create role meu_usuario with login superuser createdb createrole password 'senha_usuario_agenda';
 CREATE ROLE
-postgres=# create database projeto_agenda with owner usuario_agenda;
+postgres=# create database base_de_dados with owner meu_usuario;
 CREATE DATABASE
-postgres=# grant all privileges on database projeto_agenda to usuario_agenda;
+postgres=# grant all privileges on database base_de_dados to meu_usuario;
 GRANT
 postgres=# \q
 
@@ -69,7 +69,7 @@ Cole os dados.
 Configurando o Django no servidor
 cd ~/agendaapp
 python3.11 -m venv venv
-. venv/bin/activate
+. venv/bin/activate|
 pip install --upgrade pip
 pip install django
 pip install pillow
